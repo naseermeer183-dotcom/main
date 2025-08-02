@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    top: 0;
+    width: 100%;
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px  30px;
+            width: 200%;
+            height: 120px;
+            margin: 0;
+        }
+
+        .logo-img {
+            height: 88px;
+            width: 107px;
+        }
+
+ .menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding:0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #4554df;
+            font-weight: 500;
+        }
+
+        .menu a:hover {
+            color: #007bff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            width: 100%;
+            overflow-x: hidden;
+            
+        }
+
+        /* Header Styles */
+        .shop-header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+          nav  ul {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            margin: 10;
+            gap: 20px;
+            left: 50%;
+
+        }
+
+         menu ul a{
+           padding: 10px 15px;
+           text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: 80px;
+        }
+
+        .list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .list a:hover,
+        .list a.active {
+            color: #007bff;
+        }
+
+        #mobile {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero01 {
+            width: 100%;
+            color: white;
+            text-align: center;
+            padding: 0rem 0;
+        }
+        .bcg-clip{
+           
+            right: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            max-width: 100%;
+            height: 70vh;
+            overflow-x: hidden;
+            object-fit: cover;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+
+        .hero01 h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero01 h5 {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Products Section */
+        .prod {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pro-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            
+           
+        }
+
+        .pro-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .text1 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .text2 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            margin-bottom: 1rem;
+        }
+
+        .stars i {
+            color: #ffd700;
+            margin: 0 2px;
+        }
+
+        .text3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .cart {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .cart:hover {
+            background: #0056b3;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-in-out;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            z-index: 1001;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            color: #000;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .image-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .thumbnail-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #007bff;
+        }
+
+        .details-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .quantity-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-label {
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .quantity-btn {
+            background: #f8f9fa;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #e9ecef;
+        }
+
+        .quantity-input {
+            border: none;
+            text-align: center;
+            width: 60px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #1e7e34;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 488px) {
+             * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 37px 20px;
+    width: 100%;
+}
+
+        .logo-img {
+            height: 60px;
+            width: 80px;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Desktop menu */
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .menu a:hover {
+            color: #007bff;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                transition: left 0.3s ease;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .menu.active {
+                left: 0;
+            }
+
+            .menu li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .menu a {
+                display: block;
+                padding: 20px;
+                width: 100%;
+            }
+
+            .menu a:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* Hamburger animation */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        /* Content */
+        .content {
+            margin-top: 100px;
+            padding: 20px;
+        }
+            body{
+                overflow-x: hidden;
+                width: 70%;
+            }
+            .modal-body {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                min-width: auto;
+            }
+
+            #mobile {
+                display: block;
+            }
+
+            .list {
+                display: none;
+            }
+
+            .hero01 h2 {
+                font-size: 2rem;
+            }
+
+          prod {
+    padding: 2rem 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+}
+
+.pro-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+/*................................*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Mobile Navigation */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #b6beca;
+    box-shadow: 0 5px 15px rgb(108, 132, 177);
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
+}
+
+nav ul {
+    display: none; /* Hide desktop menu */
+}
+
+.logo-img {
+    height: 88px;
+    width: 107px;
+    margin: 20px;
+}
+
+#mobile {
+    display: block;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section - Mobile */
+.hero01 {
+    width: 143%;
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin-top: 80px; /* Account for fixed nav */
+}
+
+.bcg-clip {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    position: relative;
+}
+
+.hero01 h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    padding: 0 20px;
+}
+
+.hero01 h5 {
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0 20px;
+}
+
+/* Products Section - Mobile */
+.prod {
+    padding: 2rem 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+}
+
+.pro-container {
+    background: white;
+    width: 146%;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.pro-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.text1 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.text2 {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.text3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.cart {
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: background 0.3s;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Modal Styles - Mobile */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1001;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.image-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.main-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+}
+
+.thumbnail-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.3rem;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: #007bff;
+}
+
+.details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.product-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.product-description {
+    line-height: 1.6;
+    color: #666;
+    font-size: 0.9rem;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.quantity-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.quantity-btn {
+    background: #f8f9fa;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.quantity-input {
+    border: none;
+    text-align: center;
+    width: 50px;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+/* Banner Sections - Mobile */
+#banner {
+    background-image: url("images/bner2.jpg");
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    margin: 20px 15px;
+    text-align: center;
+    padding-top: 60px;
+    border-radius: 10px;
+}
+
+#banner h2 {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+#banner h2 span {
+    color: red;
+}
+
+#banner h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#banner button {
+    height: 50px;
+    width: 150px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid #333;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Small Banners - Mobile */
+#sm-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 15px;
+}
+
+.banner-box1,
+#sm-banner .banner-box2 {
+    height: 35vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    text-align: start;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.banner-box1 {
+    background-image: url("images/bann1.jpg");
+}
+
+#sm-banner .banner-box2 {
+    background-image: url("images/iim.jpg");
+}
+
+#sm-banner h5 {
+    font-size: 1.2rem;
+}
+
+#sm-banner h2 {
+    font-size: 1.8rem;
+    color: rgb(10, 3, 3);
+    font-weight: 800;
+}
+
+#sm-banner button {
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+    border: 2px solid black;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+/* Three Column Banner - Mobile */
+#sd-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 15px;
+}
+
+#sd-banner .m1,
+#sd-banner .m2,
+#sd-banner .m3 {
+    height: 30vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+#sd-banner .m1 {
+    background-image: url("images/mer1.jpg");
+}
+
+#sd-banner .m2 {
+    background-image: url("images/merab2.jpg");
+}
+
+#sd-banner .m3 {
+    background-image: url("images/meeeeee.jpg");
+}
+
+#sd-banner h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+
+#sd-banner h5 {
+    font-size: 1rem;
+    font-weight: bolder;
+    margin-top: 6px;
+    color: rgb(151, 7, 7);
+}
+
+/* Newsletter Banner - Mobile */
+.sb-banner {
+    background-image: url("images/ra3.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    margin: 40px 15px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.ra1 h2 {
+    font-size: 1.8rem;
+}
+
+.ra1 p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.ra2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.ra2 input {
+    height: 50px;
+    width: 100%;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.ra2 button {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(85, 192, 192);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Footer - Mobile */
+#foot {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 15px;
+    gap: 30px;
+    line-height: 1.8;
+    padding-top: 40px;
+}
+
+.footer1 img {
+    height: 80px;
+    width: 80px;
+}
+
+.footer1 h4 {
+    font-size: 1rem;
+    color: #141111;
+}
+
+.footer2,
+.footer3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer3 {
+    color: #666;
+}
+
+#foot a {
+    color: rgb(116, 111, 111);
+    text-decoration: none;
+}
+
+#foot a:hover {
+    color: rgb(71, 71, 230);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch-friendly improvements */
+button, .cart, .btn {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Improved touch targets */
+.thumbnail {
+    min-height: 44px;
+}
+
+.quantity-btn {
+    min-width: 44px;
+    min-height: 44px;
+}
+        }
+        .footer1{ 
+  line-height: 1.6;
+ }
+.footer1  img {
+  height: 100px;
+  width: 100px;
+
+}
+.footer1 h4{
+  font-size: 15px;
+  color: #141111;
+}
+.footer2{
+  display: flex;
+  flex-direction: column;
+  
+}
+.footer3{
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+}
+#foot{
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px;
+  margin-left: 60px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  gap: 60px;
+  line-height: 2;
+  padding-top: 90px;
+
+}
+#foot a{
+  color: rgb(116, 111, 111);
+}
+#foot a:hover{
+  color: rgb(71, 71, 230);
+}
+ #banner{
+  background-image: url("images/bner2.jpg");
+  height:40vh;
+  background-size: cover;
+  background-position:0cm;
+  margin: 40px 0px ;
+  text-align: center;
+  justify-content: center;
+  padding-top: 80px;
+ }
+  #banner h2{
+    font-size: 45px;
+    font-weight: bolder;
+    padding: 10px 10px;
+  
+  }
+  #banner h2 span{
+    color: red;
+  }
+  #banner h4{
+    font-size: 30px;
+    font-weight: 600;
+  }
+  #banner button{
+    height: 60px;
+    width: 200px;
+    font-size: larger;font-weight: 600;
+  }
+  #banner button:hover{
+    background-color: rgb(47, 153, 153);
+    color: white;
+    border-style: none;
+  }
+  .banner-box1{
+    background-image: url("images/bann1.jpg");
+    height:50vh;
+    width: 600px;
+  background-size: cover;
+  margin: 40px 0px ;
+  text-align:start;
+  justify-content: start;
+  padding-top: 80px;
+
+  }
+   #sm-banner .banner-box2{
+    background-image: url("images/iim.jpg");
+     height:50vh;
+    width: 600px;
+  background-size: cover;
+  margin: 40px 0px ;
+  text-align: start;
+  justify-content: start;
+  padding-top: 80px;
+
+  }
+  #sm-banner h5{
+    font-size: 30px;
+  }
+  #sm-banner h2{
+    font-size: 40px;
+    color: rgb(10, 3, 3);
+    font-weight: 800;
+  }
+
+   
+  #sm-banner button{
+      height: 50px;
+      width: 120px;
+      background-color: transparent;
+      border-color: black;
+      margin-top: 20px;
+      margin-left: 20px;
+      font-weight: 700;
+  }
+  #sm-banner button:hover{
+    background-color: rgb(212, 71, 71);
+    border-style: none;
+  }
+  #sm-banner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+    #sd-banner .m1{
+    background-image: url("images/mer1.jpg");
+    background-position: center;
+     height:38vh;
+    width: 550px;
+  margin: 40px 0px ;
+  text-align: start;
+  justify-content: start;
+  padding-top: 80px;
+
+  }
+     #sd-banner .m2{
+     
+    background-image: url("images/merab2.jpg");
+    background-position: center;
+       height:38vh;
+    width: 550px;
+  background-size: cover;
+  margin: 40px 0px ;
+  text-align: start;
+  justify-content: start;
+  padding-top: 80px;
+
+  }
+    #sd-banner .m3{
+  background-image: url("images/meeeeee.jpg");
+  background-position: center;
+  height:38vh;
+  width: 550px;
+  background-size: cover;
+  margin: 40px 0px ;
+  text-align: start;
+  justify-content: start;
+  padding-top: 80px;
+
+  }
+  
+ #sd-banner h2{
+  font-size: 50px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+ }
+ #sd-banner h5{
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 6px;
+  color: rgb(151, 7, 7);
+  text-align: center;
+
+ }
+
+ #sd-banner{
+  display: flex;
+  gap: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+ }
+ .sb-banner{
+  background-image: url("images/ra3.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+ align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 200px;
+  width: 100%;
+  margin-bottom: 60px;
+  margin-top: 60px;
+
+ }
+ .ra1 h2{
+  font-size: 40px;
+ }
+ .ra1 p{
+  font-size: 18px;
+  font-weight: 500;
+ }
+ .ra2{
+  gap: 0;
+  margin-right: 40px;
+  margin-left: 0;
+ }
+ .ra2 input{
+  height: 60px;
+  width: 430px;
+
+ }
+ .ra2 button{
+   height: 60px;
+  width: 170px;
+  background-color: rgb(85, 192, 192);
+ }
+    </style>
+</head>
+
+<body>
+    <section class="shop-header">
+   <nav>
+        <div class="nav-container">
+            <a href="#"><img class="logo-img" src="images/navbarimg.jpeg" alt="Logo"></a>
+            
+            <ul class="menu" id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="grok2.html">Shop</a></li>
+                <li><a href="ai.html">Category</a></li>
+                <li><a href="cate.html">Brands</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+ <h2 style="align-items: center; font-size: larger; font-weight: 500; color: #4554df;">Kids Store</h2>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+  </section>
+  <section class="hero01">
+    <video autoplay loop muted plays-inline  class="bcg-clip">
+        <source src="images/a10.mp4" type="video/mp4">
+    </video>
+    <h2>Trade In Offer</h2>
+    <h5>Save More With Copens & upto 70% off</h5>
+    </div>
+
+  </section>
+
+
+  
+
+    <section class="prod" id="products-container">
+        <!-- Products will be populated by JavaScript -->
+    </section>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="image-section">
+                    <img id="mainImage" class="main-image" src="" alt="Product Image">
+                    <div class="thumbnail-container" id="thumbnailContainer">
+                        <!-- Thumbnails will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="details-section">
+                    <h2 id="productTitle" class="product-title"></h2>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p id="productPrice" class="product-price"></p>
+                    <div id="productDescription" class="product-description"></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">−</button>
+                            <input type="number" id="quantityInput" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-success" onclick="buyNow()">
+                            <i class="fa-solid fa-bolt"></i> Buy Now
+                        </button>
+                        <button class="btn btn-warning" onclick="showNow()">
+                            <i class="fa-solid fa-eye"></i> Show Up Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+
+
+  <section id="foot">
+    <div class="footer1">
+      <img src="images/melogo.jpg">
+      <h5>Contact</h5>
+      <h5>Adress:Italy,Bolzano,Europe,South-Europe Street 32</h5>
+      <h5>Phone No:03006057570/03009076788</h5>
+      <h5>Hours:10AM-9PM Monday-Saturday</h5>
+      <p>Follow Us</p>
+      <div class="start">
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+
+    </div>
+    <div class="footer2">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Dilivery Information</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms And Condition</a>
+      <a href="#">Contact us </a>
+
+
+    </div>
+    <div class="footer3">
+      <h5>My Account</h5>
+      <a href="#">Sgn In</a>
+      <a href="#">View Cart</a>
+      <a href="#">Wish List</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="footer4">
+
+      <h4>Install App</h4>
+      <p>From App Store Or Google Play</p>
+      <img src="images/payment.jpg" height="120px" width="170px">
+      <p>Secured Payments Gateways</p>
+
+
+    </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        menu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                hamburger.classList.remove('active');
+                menu.classList.remove('active');
+            }
+        });
+        // Product data - 30 products
+        const products = [
+            {
+                id: 1,
+                name: "APECAR",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W1.jpeg",
+                images: [
+                    "images/W1.jpeg",
+                    "images/wm1.jpg",
+                    "images/wm4.jpg",
+                    "images/wm13.jpg"
+                ],
+                description: `CODICE LT997 • MISURA PRODOTTO: 111*73.5*57CM • MISURA SCATOLO: 108.5*57.5*33CM • BATTERIA 12V4.5AH*1 PRESTO • 2 MOTORI • CINTURA DI SICUREZZA • TASTO AVANTI E INDIETRO • MUSICA MP3 PREDEFINITA • ENTRATA USB, AUX • LUCI A LED • RADIOCOMONADO R/C • PORTE APRIBILI • ACCELLERATORE A PEDALE • VANO PORTAOGGETTI • DOPPIA VELOCITA`,
+            },
+            {
+                id: 2,
+                name: "LAMBORGHINI SVJ BIG FULL",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$199",
+                image: "images/W2.jpg",
+               images: [
+    "images/wm21.jpeg",
+   "images/wm22.jpg",
+    "images/wm24.avif",
+    "/images/W2.jpg"
+],
+                description: `CODICE LT959 • MISURA PRODOTTO: 176*108*63 CM • MISURA SCATOLO: 173*97*52 CM • BATTERIA 24V10AH • LUCI A LED • CINTURE DI SICUREZZA • PORTE APRIBILI • TELECOMANDO • RADIO E BLUETOOTH • CAMBIO MARCIA • SEDILE IN PELLE • SOSPENSIONI • DASHBOARD MUTIMEDIALE • RUORE IN EVA • BATTERIA ESTRAIBILE • DUE SEDILE REALI IN PELLE • PN/PL 59/48 KG • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA'`
+            },
+            {
+                id: 3,
+                name: "Lamborghini SVJ Small",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$89",
+                image: "/images/W3.webp",
+               images: [
+    "images/wm31.jpg",
+    "images/wm32.webp",
+    "images/wm33.webp",
+    "/images/W3.webp"
+],
+                description: `CODICE LT971 • MISURE PRODOTTO 109*55*47CM • MISURA SCATOLO 111*57*29CM • BATTERIA 12V4,5AH • PORTE APRIBILI • TELECOMANDO • LUCI E FARI A LED • SUONI E MUSICHE PREDEFINITE • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 4,
+                name: "Range Rover",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$129",
+                image: "images/w4.webp",
+               images: [
+    "images/wm41.jpeg",
+    "images/wm42.jpeg",
+    "images/wm43.webp",
+    "images/w4.webp"
+],
+                description: `CODICE LT907 • MISURAPRODOTTO 146*94*66 CM • MISURASCATOLO 149*80*44 CM • BATTERIA 12V10AH • PORTEAPRIBILIE TELECOMANDO • LUCIALED • SUONIEMUSICHE PREDEFINITE • SOSPENSIONI • SEDILE IN PELLE • TASTO AVANTI E INDIETRO • PESO N/L 31/36KG`
+            },
+            {
+                id: 5,
+                name: "RANGE ROVER FULL",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$149",
+                image: "images/W5.jpg",
+                images: [
+                    "images/wm51.webp",
+                    "images/wm52.jpg",
+                    "images/W5.jpg",
+                    "images/W5.jpg"
+                ],
+                description: `CODICE LT980 • MISURAPRODOTTO 146*94*66 CM • MISURASCATOLO 149*80*44 CM • BATTERIA 12V10AH • PORTEAPRIBILIE TELECOMANDO • LUCIALED • SUONIEMUSICHE PREDEFINITE • SOSPENSIONI • SEDILE IN PELLE • TASTO AVANTI E INDIETRO • PESO N/L 31/36KG`
+            },
+            {
+                id: 6,
+                name: "RANGE ROVER FULL VERN",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$159",
+                image: "/images/W6.jpg",
+                images: [
+                    "images/wm61.jpg",
+                    "images/wm62.webp",
+                    "images/wm63.jpeg",
+                    "images/wm64.jpg"
+                ],
+                description: `CODICE LT981 • MISURAPRODOTTO 146*94*66 CM • MISURASCATOLO 149*80*44 CM • BATTERIA 12V10AH • PORTEAPRIBILIE TELECOMANDO • LUCIALED • SUONIEMUSICHE PREDEFINITE • SOSPENSIONI • SEDILE IN PELLE • TASTO AVANTI E INDIETRO • PESO N/L 31/36KG`
+            },
+            {
+                id: 7,
+                name:"LAND ROVER VELAR",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "$119",
+                image: "images/W7.jpg",
+                images: [
+                    "images/wm71.jpg",
+                    "images/wm72.webp",
+                    "images/wm73.avif",
+                    "images/wm74.webp"
+                ],
+                description: `CODICE LT931 • MP3 E SUONI PREDEFINITI  • PORTE APRIBILI  • TELECOMANDO  • LUCI A LED • TASTI VELOCITA’ E MARCIA • SOSPENSIONI SU RUOTE • MISURA PRODOTTO 108*61*50 CM • MISURA SCATOLO 109*56*36 CM  • PN/PL : 15,5/18,5 KG • BATTERIA 12V4,5AH  • SEDILE IN PELLE • TASTO AVANTI E INDIETRO`,
+            },
+            {
+                id: 8,
+                name: "JEEP GRAND CHEROKEE",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€400",
+                image: "images/W8.webp",
+                images: [
+                    "images/wm81.jpeg",
+                    "images/wm82.jpeg",
+                    "images/wm83.jpeg",
+                    "images/wm84.webp"
+                ],
+                description:  `• CODICE LT933 • BATTERIA 12V7AH • MISURA PRODOTTO 114*76*58CM • MISURA SCATOLO 116*82*38 • SEDILE IN PELLE • TASTO AVANTI E INDIETRO • PORTE APRIBILI E TELECOMANDO • LUCI A LED • MUSICHE E SUONI PREDEFINITI • SOSPENSIONI • PN/PL: 17/22,5 KG`
+            },
+            {
+                id: 9,
+                name: "JEEP RUBICON",
+                shortDesc: "Off-Road Adventure",
+                price: "€320",
+                image: "images/W9.jpg",
+                images: [
+                    "images/wm91.jpg",
+                    "images/wm92.jpg",
+                    "images/wm93.jpg",
+                    "images/wm94.jpg"
+                ],
+                description: `CODICE LT908 • MISURA PRODOTTO 127*70*80CM • MISURA SCATOLO 117*68*43 CM • PORTE APRIBILI • SOSPENSIONI • TELECOMANDO • FARI E LUCI ANTERIORI E SUPERIORI A LED • BATTERIA 12V7AH • CINTURA DI SICUREZZA • TASTO CONTROLLO TELECOMANDO/MANUALE • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 10,
+                name: "TOYOTA CRUISER",
+                shortDesc: "Luxury Off-Road",
+                price: "€169",
+                image: "images/W10.webp",
+                images: [
+                    "images/wm101.webp",
+                    "images/wm102.webp",
+                    "images/wm103.jpg",
+                    "images/wm104.webp"
+                ],
+                description: `CODICE LT964 • BATTERIA 12v4,5ah • SEDILE IN PELLE • MISURA SCATOLO 99*56*30 CM • MISURA PRODOTTO 98*65*30 CM • PORTE APRIBILI • SUONI E MUSICHE • LUCI A LED • CINTURA DI SICUREZZA • SOSPENSIONI • TASTO AVANTI E INDIETRO • DOPPIA VELOCITA’ • PN/PL 13,9/17,2 KG`
+            },
+            {
+                id: 11,
+                name: "FIAT 500",
+                shortDesc: "Luxury SUV Experience",
+                price: "€389",
+                 image: "images/W11.jpeg",
+                images: [
+                    "images/wm111.jpg",
+                    "images/wm111.jpg",
+                    "images/wm111.jpg",
+                    "images/wm111.jpg"
+                ],
+                description: `CODICE LT993 • BATTERIA 12v4,5ah • MISURA PRODOTTO 97,5*54*32 CM • SUONI E MUSICHE • LUCI A LED • CINTURA DI SICUREZZA • SOSPENSIONI • PN/PL 10/13 KG`
+            },
+            {
+                id: 12,
+                name: "BEETLE SMALL",
+                shortDesc: "German Engineering",
+                price: "€209",
+                 image:  "images/wm122.jpg",
+                images: [
+                    "images/W12.jpeg",
+                    "images/wm121.jpeg",
+                    "images/wm122.jpg",
+                    "images/wm123.jpg",
+                    
+                ],
+                description: `CODICE LT934 • MISURA PRODOTTO 96*51*47 CM • MISURA SCATOLO98*53*28 CM • MISURA PRODOTTO  MISURA SCATOLO  PN/PL • RADIO, BLUETOOTH  BATTERIA • PORTE APRIBILI • SOSPENSIONI  • TELECOMANDO • PN/PL 16/19 KG • BATTERIA 12V4,5AH • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA`
+            },
+            {
+                id: 13,
+                name: "RUF SMALL",
+                shortDesc: "All-Wheel Drive",
+                price: "€299",
+                image: "images/W14.jpg",
+                images: [
+                   "images/wm131.jpg",
+                   "images/wm132.jpeg",
+                   "images/wm133.webp",
+                   "images/wm134.jpeg"
+                ],
+                description: `CODICE LT991 • BATTERIA 12v4,5ah • SEDILE IN PELLE • MISURA SCATOLO 105*53*25,5 CM • MISURA PRODOTTO 105*48*49CM • SUONI E MUSICHE • LUCI A LED • CINTURA DI SICUREZZA • SOSPENSIONI • CAMBIO AVANTI E INDIETRO • DOPPIA VELOCITA’ • RADIOCOMANDO R/C • PN/PL 10/12 KG`
+            },
+            {
+                id: 14,
+                name: "AUDI ETRON",
+                shortDesc: "Italian Supercar",
+                price: "€299",
+                image: "images/W15.jpg",
+                images: [
+                 "images/wm141.jpg",
+                 "images/wm142.jpg",
+                 "images/wm143.jpg",
+                 "images/wm144.webp"
+                ],
+                description: `CODICE LT937 • BATTERIA 12v4,5ah • SEDILE IN PELLE • MISURA SCATOLO 110*58*37CM • MISURA PRODOTTO 108*60*47CM • PORTE APRIBILI • SUONI E MUSICHE • LUCI A LED • CINTURA DI SICUREZZA • SOSPENSIONI • TASTO AVANTI E INDIETRO • DOPPIA VELOCITA’`
+            },
+            {
+                id: 15,
+                name: "AUDI RS6",
+                shortDesc: "Sports Car Icon",
+                price: "€279",
+                image: "images/W16.webp",
+                images: [
+                    "images/wm151.jpg",
+                    "images/wm152.webp",
+                    "images/wm153.jpg",
+                    "images/wm154.webp"
+
+
+
+                ],
+                description: `LT945 • SUONI E MUSICHE PREDEFINITE • LUCI A LED • CINTURA DI SICUREZZA • MISURA PRODOTTO 102*60*43 CM • MISURA SCATOLO 105*53*33 CM • BATTERIA 12V4,5AH • PORTE APRIBILI • SOSPENSIONI • PESO N/L 12/14,5 KG • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 16,
+                name: "AUDI R8 Sport",
+                shortDesc: "British Supercar",
+                price: "€329",
+                image: "images/W17.jpeg",
+                images: [
+                    "images/W17.jpeg",
+                    "images/wm161.webp",
+                    "images/wm162.jpg",
+                    "images/wm161.webp",
+
+                ],
+                description: `LT936 • SUONI E MUSICHE PREDEFINITE • LUCI A LED • CINTURA DI SICUREZZA • MISURA PRODOTTO: 107*48*58 cm • BATTERIA 12V4,5AH • PORTE APRIBILI • SOSPENSIONI • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 17,
+                name: "AUDI Q8",
+                shortDesc: "Ultimate Hypercar",
+                price: "€299",
+                image: "images/W18.webp",
+                images: [
+                   "images/wm171.jpeg",
+                   "images/wm172.jpeg",
+                   "images/wm173.webp",
+                   "images/wm174.webp"
+
+
+                ],
+                description: `LT985 • SUONI E MUSICHE PREDEFINITE • LUCI A LED • CINTURA DI SICUREZZA • MISURA PRODOTTO 102*60*43 CM • MISURA SCATOLO 105*53*33 CM • BATTERIA 12V4,5AH • PORTE APRIBILI • SOSPENSIONI • PESO N/L 12/14,5 KG • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 18,
+                name: "MASERATI FOLGORE",
+                shortDesc: "Electric Innovation",
+                price: "€349",
+                image: "images/W19.jpeg",
+                images: [
+                   "images/wm181.jpg",
+                   "images/wm182.png",
+                   "images/wm183.jpg",
+                   "images/wm184.jpeg"
+                ],
+                description: `LT992 • SUONI E MUSICHE PREDEFINITE • LUCI A LED • SEDILE IN PELLE • CINTURA DI SICUREZZA • MISURA PRODOTTO 120*72*50 CM • MISURA SCATOLO 120*68*31 CM • BATTERIA 12V7AH • PORTE APRIBILI • SOSPENSIONI • PESO N/L 12/14,5 KG • TASTO AVANTI E INDIETRO • DOPPIA VELOCITA’`
+            },
+            {
+                id: 19,
+                name: "MASERATI MC-20 FULL",
+                shortDesc: "American Muscle",
+                price: "€359",
+                image: "images/W20.jpg",
+                images: [
+                    "images/wm191.jpg",
+                    "images/wm192.jpg",
+                    "images/wm193.avif",
+                    "images/W20.jpg"
+
+                ],
+                description: `DESCRIZIONI • CODICE LT977 • PRODOTTO: 143 * 97 * 58,5 CM • MISURA SCATOLO: 147 * 84,5 * 38 CM • BATTERIA 12V7AH • PORTE APRIBILI E TELECOMANDO • LUCI E FARI A LED • DUE SEDILI • SUONI E MUSICHE PREDEFINITE • SOSPENSIONI • SEDILE IN PELLE • G.W / NW: 30/26 KG 20 • CINTURE DI SICUREZZA • TASTO AVANTI E INDIETRO • DOPPIA VELOCITA’ • PEDALE FRENO`
+            },
+            {
+                id: 20,
+                name: "MASERATI GHIBLI",
+                shortDesc: "Racing Heritage",
+                price: "€189",
+                image: "images/W21.jpg",
+                images: [
+                   "images/wm201.jpg",
+                   "images/wm202.jpg",
+                   "images/W21.jpg",
+                   "images/wm201.jpg"
+
+                ],
+                description: `•Cod. LT880 •Misure Scatolo: 104*55*26,5 cm •Misure Prodotto: 108*86*40Cm •12V7Ah*1 •2 Motori •Mp3 •Luci •Suoni •Velocita’ 3-5 Km/H •Porte Apribili •Telecomando •Peso N/L 12/15 kg`
+            },
+            {
+                id: 21,
+                name: "MERCEDES GTR SMALL",
+                shortDesc: "Japanese Performance",
+                price: "€259",
+                image: "images/wm212.webp",
+                images: [
+                   "images/wm211.webp",
+                   "images/wm212.webp",
+                   "images/wm211.webp",
+                   "images/wm213.jpeg"
+
+
+                ],
+                description: `CODICE LT915 • MISURA PRODOTTO 100*50*26 CM • MISURA SCATOLO 98.5*55*41 CM • PORTE APRIBILI E TELECOMANDO • BATTERIA 12V4.5AH • SOSPENSIONI E LUCI A LED • SUONI E MUSICHE PREDEFINITE • CINTURE DI SICUREZZA • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 22,
+                name: "CLS SMALL",
+                shortDesc: "Hybrid Supercar",
+                price: "€289",
+                image: "images/W23.webp",
+                images: [
+                   "images/wm221.jpeg",
+                   "images/wm222.webp",
+                   "images/wm223.jpg",
+                   "images/wm224.jpg"
+                ],
+                description: `CODICE LT1005 • BATTERIA 24V20AH • MISURA PRODOTTO 166*84*54CM • MISURA SCATOLO 168*86*37 • SEDILE ALCANTARA • SISTEMA ELS • PORTE LIGHTWEIGHT • TELECOMANDO SPORT • JEWEL LED • SISTEMA ELS STUDIO • ALCANTARA DASHBOARD • ADAPTIVE DAMPERS • PN/PL: 44/36 KG • SPORT HYBRID`
+            },
+            {
+                id: 23,
+                name: "MERCEDES CLA45",
+                shortDesc: "Italian Excellence",
+                price: "€319",
+                image: "images/W24.webp",
+                images: [
+                 "images/wm231.webp",
+                 "images/wm232.jpg",
+                 "images/wm233.webp",
+                 "images/wm234.jpg"
+
+
+                ],
+                description: `CODICE LT968 • MISURA PRODOTTO  110*61*45 CM • MISURA SCATOLO  115*58*30 CM • BATTERIA 12V4,5AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 24,
+                name: "MERCEDES GLE450",
+                shortDesc: "British Luxury",
+                price: "€359",
+                image: "images/W25.jpeg",
+                images: [
+                   "images/wm241.webp",
+                   "images/wm242.webp",
+                   "images/wm242.webp",
+                   "images/W25.jpeg"
+                ],
+                description: `CODICE LT920 • MISURA PRODOTTO  105*67.5*53 CM • MISURA SCATOLO  108*56*36 CM • BATTERIA 12V7AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • SEDILE IN PELLE • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 25,
+                name: "GLE 450 VERNICIATO",
+                shortDesc: "Ultimate Luxury",
+                price: "€349",
+                image: "images/W26.jpg",
+                images: [
+                   "images/wm251.webp",
+                   "images/wm252.jpeg",
+                   "images/wm253.jpg",
+                   "images/wm254.jpeg"
+                ],
+                description: `CODICE LT962 • MISURA PRODOTTO  105*67.5*53 CM • MISURA SCATOLO  108*56*36 CM • BATTERIA 12V7AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • SEDILE IN PELLE • TASTO AVANTI E INDIETRO`
+            },
+            {
+                id: 26,
+                name: "MERCEDES CLASSE G",
+                shortDesc: "British Elegance",
+                price: "€356",
+                image: "images/W27.jpg",
+                images: [
+                    "images/wm261.jpg",
+                    "images/wm262.jpg",
+                    "images/wm263.jpg",
+                    "images/W27.jpg"
+
+                ],
+                description: `CODICE LT954 • MISURA PRODOTTO  143*82*64 CM • MISURA SCATOLO  135*76*43 CM • BATTERIA 12V7AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • SEDILE IN PELLE`
+            },
+            {
+                id: 27,
+                name: "MERCEDES CLASSE G FULL",
+                shortDesc: "Swedish Hypercar",
+                price: "€321",
+                image: "images/W28.webp",
+                images: [
+                    "images/wm271.avif",
+                    "images/W28.webp",
+                    "images/wm272.jpg",
+                    "images/wm271.avif"
+                ],
+                description: `CODICE LT975 • MISURA PRODOTTO  143*82*64 CM • MISURA SCATOLO  135*76*43 CM • BATTERIA 12V7AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • SEDILE IN PELLE • DISPLAY MP4`
+            },
+            {
+                id: 28,
+                name: "MERCEDES CLASSE G FULL VERNICIATO",
+                shortDesc: "MERCEDES CLASSE G FULL VERNICIATO",
+                price: "€321",
+                image: "images/W29.jpg",
+                images: [
+                    "images/wm281.jpg",
+                    "images/W29.jpg",
+                    "images/wm282.jpg",
+                    "images/W29.jpg"
+                ],
+                description: `CODICE LT976 • MISURA PRODOTTO  143*82*64 CM • MISURA SCATOLO  135*76*43 CM • BATTERIA 12V7AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA • SEDILE IN PELLE • DISPLAY MP4`
+            },
+            {
+                id: 29,
+                name: "CLASSE G SMALL",
+                shortDesc: "Electric Hypercar",
+                price: "€400",
+                image:"images/wm292.jpg",
+                images: [
+                    "images/wm292.jpg",
+                    "images/wm292.jpg",
+                    "images/W30.jpg",
+                    "images/wm292.jpg",
+
+                ],
+                description: `CODICE LT969 • MISURA PRODOTTO  1106*64*34 CM • MISURA SCATOLO  99*54*34 CM • BATTERIA 12V4,5AH • PORTE APRIBILI E  TELECOMANDO • SOSPENSIONI • LUCI A LED • SUONI E MUSICHE  PREDEFINITE • CINTURE DI SICUREZZA`
+            },
+            {
+                id: 30,
+                name: "MERCEDES UNIMOG",
+                shortDesc: "Electric Future",
+                price: "€321",
+                image: "images/W31.jpg",
+                images: [
+                   "images/wm301.jpeg",
+                   "images/wm302.jpeg",
+                   "images/wm303.webp",
+                   "images/wm304.webp"
+                ],
+                description: `CODICE LT972 • MOTORE 35*2 • PN/PL 23/28KG • MISURA PRODOTTO 126*68*102 CM • MISURA SCATOLO 129*60*53 CM • RUOTE IN GOMMA • BATTERIA 12V10AH • LUCI E SUONI • USB E BLUETOOTH • SOSPENSIONI • PORTE APRIBILI • SEDILE IN PELLE • TELECOMANDO • RUOTE IN EVA • TASTO AVANTI E INDIETRO • DISPLAY MP4`
+            },
+            {
+                id: 31,
+                name: "SCANIA",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W32.jpeg",
+                images: [
+                   "images/scantia.jpg",
+                   "images/wm312.jpg",
+                   "images/wm313.webp",
+                   "images/W32.jpeg"
+                ],
+                description: `• CODICE LT989 • MOTORE 65W*2 • PN/PL 24/30 KG • MISURA PRODOTTO 126*68*102 CM • MISURA SCATOLO 129*60*53 CM • RUOTE IN GOMMA • BATTERIA 24V7AH • DASHBOARD CON SUONI • USB E BLUETOOTH • SOSPENSIONI • PORTE APRIBILI • TELECOMANDO • CAMBIO DI MARCIA • DOPPIA VELOCITA`
+            },
+            {
+                id: 32,
+                name: " SMALL TRUCK",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/wm324.webp",
+                images: [
+                    "images/wm324.webp",
+                    "images/wm322.jpg",
+                    "images/wm323.jpg",
+                    "images/wm324.webp"
+
+
+                ],
+                description: `CODICE LT950 • MISURA PRODOTTO 72*30*47 CM • MISURA SCATOLO 73,5*31,5*32 CM • BATTERIA 6V4,5AH • LUCI A LED • SUONI E MUSICHE PREDEFINITE • PN/PL 4,9/6,6 KG • TASTO AVANTI/INDIETRO`
+            },
+            {
+                id: 33,
+                name: "RUSPA",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W34.avif",
+                images: [
+                    "images/wm331.jpg",
+                    "images/wm332.jpg",
+                    "images/wm333.webp",
+                    "images/wm334.webp"
+                ],
+                description: `CODICE LT979 • MISURA PRODOTTO 149*82*75 CM • MISURA SCATOLO 102*60*55 CM • PN/PL 28/33 KG • CINTURA SICUREZZA • MOTORE 50W*2 • BATTERIA 12V10AH • LEVE MANOVRABILI • DOPPIA VELOCITA’ • MUSICA • LUCI A LED • PORTE APRIBILI`
+            },
+            {
+                id: 34,
+                name: "LAMAS TRATTORE",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W35.jpeg",
+                images: [
+                    "images/W35.jpeg",
+                    "images/wm341.webp",
+                    "images/wm342.jpg",
+                      "images/wm342.jpg"
+                ],
+                description: `CODICE LT984 • MISURA PRODOTTO 140*52*53 cm • MISURA SCATOLO 82*52*53 CM • PN/PL 13/14 KG • MOTORE 18W*2 • BATTERIA 12V4,5AH • TASTO AVANTI/INDIETRO`
+            },
+            {
+                id: 35,
+                name: "GO-KART",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W36.avif",
+                images: [
+                    "images/W36.avif",
+                    "images/wm351.jpg",
+                    "images/wm352.jpg",
+                    "images/wm351.jpg"
+
+                ],
+                description: ` • CODICE LT951 • ACCELLERATORE E FRENO A PEDALE • MISURA PRODOTTO 163*92*66 CM • MISURA SCATOLO 166*87*43 CM • BATTERIA 24V14AH • DASHBOARD MULTIMEDIALE • RUOTE IN ALTA QUALTA’ PER DRIFTING • DUE SEDILI REALI IN PELLE • TASTO PER DRIFTARE • LUCI A LED • SUONI E MUSICHE PREDEFINITE • PN/PL 53/44 KG • PEDALE FRENO • DOPPIA VELOCITA’ • CAMBIO AVANTI/INDIETRO`
+            },
+            {
+                id: 36,
+                name: "UTV 24V",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W37.jpg",
+                images: [
+                   "images/wm361.jpg",
+                   "images/wm362.jpg",
+                   "images/wm363.jpg",
+                   "images/wm364.webp"
+                ],
+                description: `CODICE LT996 • ACCELLERATORE A PEDALE • MISURA PRODOTTO 143*63*75 CM • MISURA SCATOLO 128*78*41 CM • BATTERIA 24V7AH • DASHBOARD MULTIMEDIALE • RUOTE IN EVA • DUE SEDILI REALI • LUCI A LED • SUONI E MUSICHE PREDEFINITE • PN/PL 29/35 KG • DOPPIA VELOCITA’ • CAMBIO AVANTI/INDIETRO`
+            },
+            {
+                id: 37,
+                name: "ATV 1.0  12V",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W38.webp",
+                images: [
+                 "images/wm371.webp",
+                 "images/wm372.webp",
+                 "images/wm373.jpg",
+                 "images/wm374.webp"
+            ],
+                description: `CODICE LT940 • MISURA PRODOTTO 95*62*62 CM • MISURA SCATOLO 92*50*44 CM • BATTERIA 12V4.5AH • LUCI A LED • SUONI • TELECOMANDO • SEDILE IN PELLE • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA’`
+            },
+            {
+                id: 38,
+                name: "ATV 12V 2.0",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W39.webp",
+                images: [
+                    "images/wm381.jpg",
+                    "images/wm381.jpg",
+                    "images/wm381.jpg",
+                    "images/W39.webp",
+
+                   
+                ],
+                description: `•COD. LT898 •MISURE SCATOLO: 102*64*53 CM •MISURE PRODOTTO: 111*65*74 •BATTERIA 12V7AH •MOTORE 2*380 •SOSPENSIONI •TELECOMANDO •LUCI E SUONI •MP3 •CHIAVE REALISTICA •POGGIOASCHIENA •CAPACITA’ DI PESO  MASSIMA 40KG •PESO N/L 19/25 KG •TASTO AVANTI/INDIETRO •DOPPIA VELOCITA’`
+            },
+            {
+                id: 39,
+                name: "ATV 3.0",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W400.webp",
+                images: [
+                    "images/wm391.jpg",
+                    "images/wm392.jpg",
+                    "images/W400.webp",
+                    "images/wm391.jpg"
+                ],
+                description: `CODICE LT946 • MISURA PRODOTTO 115*70*57 CM • MISURA SCATOLO 112,5*49*43 CM • BATTERIA 12V4,5AH • LUCI A LED • SUONI E MUSICHE PREDEFINITE • PN/PL 16/13 KG • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA`
+            },
+            {
+                id: 40,
+                name: "QUAD SAFARI",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W40.jpg",
+                images: [
+                    "https://via.placeholder.com/300x200/ff6b6b/white?text=APECAR+1",
+                    "https://via.placeholder.com/300x200/ff8e8e/white?text=APECAR+2",
+                    "https://via.placeholder.com/300x200/ffb3b3/white?text=APECAR+3",
+                    "https://via.placeholder.com/300x200/ffd1d1/white?text=APECAR+4"
+                ],
+                description: `CODICE LT986 • MISURA SCATOLO 64.5*34*29.5 CM • MISURA PRODOTTO 68*37*43 CM • BATTERIA 6V4.5AH • LUCI A LED • BAULETTO PORTA OGGETTI • TASTO AVANTI/INDIETRO • PESO N/L 5/6KG`
+            },
+            {
+                id: 41,
+                name: "MINI QUAD DELUXE",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W41.jpeg",
+                images: [
+                    "images/WM411.jpg",
+                    "images/WM413.webp",
+                    "images/WM412.webp",
+                    "images/W41.jpeg"
+
+                ],
+                description: `CODICE LT928 • MISURA SCATOLO 64.5*34*29.5 CM • BATTERIA 6V4.5AH • LUCI A LED • BAULETTO PORTA OGGETTI • TASTO AVANTI/INDIETRO • PESO N/L 4,8/5,8 KG`
+            },
+             {
+                id: 42,
+                name: "HONDA SH125",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W42.jpg",
+                images: [
+                   "images/WM421.png",
+                   "images/WM422.jpg",
+                   "images/WM423.jpg",
+                   "images/W42.jpg"
+                ],
+                description: `• CODICE LT998 • MISURA SCATOLO 99,5*52*31,5 CM • MISURA PRODOTTO 123*52*31,5 CM • BATTERIA 12V4,5AH • LUCI A LED • RUOTE IN EVA • TASTO AVANTI E INDIETRO • SEDILE IN PELLE • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 43,
+                name: "APRILIA RSIV BIG 24v",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W43.jpeg",
+                images: [
+                    "images/WM431.webp",
+                    "images/WM432.png",
+                    "images/W43.jpeg",
+                    "images/WM431.webp"
+                ],
+                description: `CODICE LT973 • MISURA PRODOTTO 130*55*78 CM • MISURA SCATOLO 103*33*61 CM • LUCI A LED • PESO N/L 18/21 KG • SUONI E MUSICHE PREDEFINITE • BATTERIA 24V7AH • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 44,
+                name: "APRILIA RSIV SMALL",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W444.jpg",
+                images: [
+                    "images/WM441.jpg",
+                    "images/WM441.jpg",
+                    "images/WM441.jpg",
+                    "images/WM441.jpg"
+                ],
+                description: `CODICE LT974 • MISURA PRODOTTO 101*43*58 CM • MISURA SCATOLO 81*28*51 CM • LUCI A LED • PESO N/L 10/13 KG • SUONI E MUSICHE PREDEFINITE • BATTERIA 12V4.5AH • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 45,
+                name: "APRILIA DORSODURO",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W45.jpg",
+                images: [
+                    "images/WM452.jpg",
+                    "images/W45.jpg",
+                    "images/WM452.jpg",
+                    "images/W45.jpg"
+
+                ],
+                description: `CODICE LT909 • MISURA PRODOTTO 105*50*51 CM • MISURA SCATOLO 82*33*53 • SEDILE IN PELLE • LUCI A LED • SUONI E MUSICHE PREDEFINITE • AMMORTIZZATORE REALE • BATTERIA 12V4.5AH • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA’ • PESO N/L 11/13,5 KG`
+            },
+             {
+                id: 46,
+                name: "DORSODURO SMALL",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W46.jpg",
+                images: [
+                    "images/WM461.jpg",
+                    "images/WM462.jpg",
+                    "images/WM463.jpg",
+                    "images/W46.jpg"
+
+                ],
+                description: `CODICE LT965 • MISURA PRODOTTO 82,5*44*56 CM • MISURA SCATOLO 61*28*41 CM • LUCI A LED • PESO N/L 4,8/5,8 KG • SUONI E MUSICHE PREDEFINITE • BATTERIA 6V4.5AH • TASTO AVANTI/INDIETRO`
+            },
+             
+             {
+                id: 47,
+                name: "APRILIA MOTOCROSS RX125",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W477.webp",
+                images: [
+                   "images/WM471.jpg",
+                   "images/WM472.webp",
+                   "images/W477.webp",
+                   "images/WM472.webp"
+
+
+                ],
+                description: `CODICE LT944 • MISURA PRODOTTO 108*49*75 CM • MISURA SCATOLO 87*37*48 CM • BATTERIA 12V4AH • RUOTE IN GOMMA EVA • LUCI A LED • CINTURE DI SICUREZZA • SOSPENSIONI • AMMORTIZZATORE`
+            },
+             {
+                id: 48,
+                name: "MOTO DELUXE 24V",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W48.webp",
+                images: [
+                    "images/WM481.jpg",
+                    "images/WM482.webp",
+                    "images/WM483.jpg",
+                    "images/W48.webp"
+
+
+                ],
+                description: `• CODICE LT994 • MISURA PRODOTTO 130*55*79 CM • MISURA SCATOLO 120*35*56 CM • BATTERIA 12V7AH*2 (24V) • ACCELLERATORE A MANO • LEVA FRENO • RUOTE REALI DA 12’’ • SUONI E MUSICHE • LUCI A LED • SOFT START • DOPPIA VELOCITA’ • PN/PL 25/29 KG`
+            },
+             {
+                id: 49,
+                name: "VESPA FULL PX 150",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W499.jpg",
+                images: [
+                    "images/WM491.jpg",
+                    "images/WM492.webp",
+                    "images/WM493.jpg",
+                     "images/WM493.jpg"
+
+                ],
+                description: ` • CODICE LT912/LT960 • MISURA PRODOTTO 107.5*35.5*55.5 CM • MISURA SCATOLO 95*35*55 CM • BATTERIA 12V4.5H • SEDILE IN PELLE • RUOTE IN GOMMA EVA • PARAVENTO • BAULETTO • SUONI E MUSICHE • LUCI A LED • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA’`
+            },
+             {
+                id: 50,
+                name: "VESPA FULL NAPOLI",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W49.jpeg",
+                images: [
+                    "images/WM501.jpg",
+                    "images/W49.jpeg",
+                    "images/WM502.jpg",
+                    "images/W49.jpeg",
+
+                ],
+                description: `CODICE LT912/LT960 • MISURA PRODOTTO 107.5*35.5*55.5 CM • MISURA SCATOLO 95*35*55 CM • BATTERIA 12V4.5H • SEDILE IN PELLE • RUOTE IN GOMMA EVA • PARAVENTO • BAULETTO • SUONI E MUSICHE • LUCI A LED • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA`
+            },
+             {
+                id: 51,
+                name: "VESPA PICCOLA PX150",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W51.webp",
+                images: [
+                    "images/WM511.jpeg",
+                    "images/WM512.jpg",
+                    "images/WM513.jpg",
+                   "images/WM514.jpeg"
+                ],
+                description: `CODICE LT913 • MISURA PRODOTTO 65*35*40 CM • MISURA SCATOLO 57*32*28 CM • BATTERIA 6V4.5AH • POGGIASCHIENA • LUCI A LED • SUONI PREDEFINITI • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 52,
+                name: "VESPA SPRINT 12V",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W511.avif",
+                images: [
+                    "images/WM521.png",
+                    "images/WM522.jpg",
+                    "images/WM523.jpg",
+                    "images/WM524.jpg"
+                ],
+                description: `CODICE LT941 • MISURA PRODOTTO 107*47*73 CM • MISURA SCATOLO 93*32,5*50 CM • BATTERIA 12V4.5AH • LUCI A LED • SUONI PREDEFINITI • PESO N/L  9/11KG • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 53,
+                name: "VESPA SIDECAR BIG",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W52.avif",
+                images: [
+                  "images/WM531.jpg",
+                  "images/WM532.jpeg",
+                  "images/W52.avif",
+                   "images/WM531.jpg",
+
+                ],
+                description: `CODICE LT957 • MISURA PRODOTTO 115*105*83,5CM;  • MISURA SCATOLO 103,5*92,5*64,5CM ;  • PN/PL 22/30 KG ; • BATTERIA 12V7AH; • RUOTE IN EVA; • SOSPENSIONI; • DOPPIO SEDILE  • LUCI E SUONI • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA’`
+            },
+             {
+                id: 54,
+                name: "VESPA SIDECAR SMALL",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W53.jpeg",
+                images: [
+                    "images/WM541.jpg",
+                    "images/WM531.jpg",
+                    "images/WM542.jpg",
+                    "images/W53.jpeg"
+                ],
+                description: `CODICE LT958 • MISURA PRODOTTO 80*70*63,5CM;  • MISURA SCATOLO 68,5*38*49 CMCM ;  • PN/PL 7,5/10 KG ; • MOTORE 18W*2;  • BATTERIA 6V4,5AH; • SOSPENSIONI; • LUCI E SUONI • TASTO AVANTI/INDIETRO`
+            },
+             {
+                id: 55,
+                name: "BMW GS850F",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image:"images/wm552.webp" ,
+                images: [
+                   "images/wm551.webp",
+                   "images/wm552.webp",
+                   "images/W54.jpeg",
+                   "images/wm553.jpg"
+
+                ],
+                description: `CODICE LT943 • MISURA PRODOTTO 111*62*76 CM • MOTORE 2*550W • RUOTE IN EVA • MISURA SCATOLO 82*40*30 CM • BATTERIA 12V7AH • DASHBOARD MP3 • SUONI PREDEFINITI • LUCI A LED • DOPPIA VELOCITA`
+            },
+             {
+                id: 56,
+                name: "BMW HP4 RACE 12V",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W55.jpeg",
+                images: [
+                "images/wm561.jpg",
+                "images/wm562.jpg",
+                "images/wm563.jpg",
+                "images/W55.jpeg"
+                ],
+                description: `• CODICE LT939 • MISURA PRODOTTO 119*66*73 CM • MISURA SCATOLO 117*40*63 CM • BATTERIA 12V7AH • SEDILE IN PELLE • MP3 • SUONI PREDEFINITI • LUCI A LED`
+            },
+             {
+                id: 57,
+                name: "BMW HP4 SPORT  12V 3R",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W56.avif",
+                images: [
+                   "images/wm571.jpg",
+                   "images/wm5722.webp",
+                   "images/wm573.jpg",
+                   "images/W56.avif"
+
+                ],
+                description: `CODICE LT938 • MISURA PRODOTTO 82.5*42*54 CM • MISURA SCATOLO 82*40*30 CM • BATTERIA 12V4.5AH • SEDILE IN PELLE • MP3 • SUONI PREDEFINITI • LUCI A LED • TASTO AVANTI/INDIETRO • DOPPIA VELOCITA`
+            },
+             {
+                id: 58,
+                name: "MOTO LAMAS",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W57.avif",
+                images: [
+                   "images/wm581.avif",
+                   "images/wm582.png",
+                   "images/wm583.png",
+                    "images/W57.avif"
+                ],
+                description: `CODICE LT987 • MISURA SCATOLO 58*28,5*28,5 CM • MISURA PRODOTTO 70*35*47 CM • BATTERIA 6V4AH • LUCI A LED • SUONI PREDEFINITI • PESO N/L 4.5/5 KG`
+            },
+             {
+                id: 59,
+                name: "LAMAS POMPIERI",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W58.webp",
+                images: [
+                    "images/wm591.png",
+                    "images/W58.webp",
+                "images/W58.webp",
+                "images/W58.webp",
+                ],
+                description: `CODICE LT949 • MISURA PRODOTTO 80*57*41 CM • MISURA SCATOLO 84*40,7*48 CM • BATTERIA 6V4.5AH • MAX PESO 20KG • LUCI A LED • TASTO AVANTI/INDIETRO • TASTO SPARABOLLE`
+            },
+             {
+                id: 1,
+                name: "MONOPATTINO DELUXE",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/W59.jpg",
+                images: [
+                 "images/W59.jpg",
+                "images/wm602.jpg",
+                "images/wm603.jpg",
+                "images/wm604.avif"
+                ],
+                description: `CODICE LT983 • MISURA PRODOTTO 67*32*69 CM • MISURA SCATOLO 60*19*28 CM • BATTERIA 12v4,5ah • LUCI A LED MULTICOLORE • SET PROTEZIONE • CASCO INCLUSO`
+            },
+             {
+                id: 61,
+                name: "TRICO FUNNY",
+                shortDesc: "SF90 Stradale, 812 Superfast",
+                price: "€360",
+                image: "images/wm613.webp",
+                images: [
+               "images/wm611.webp",
+               "images/wm612.webp",
+               "images/wm613.webp",
+               "images/W60.jpeg",
+                ],
+                description: `DESCRIZIONI • CODICE LT982 • MISURA PRODOTTO 69*49*98 CM • MISURA SCATOLO 72*28*36 CM • MAX PESO 20KG • CAMPANELLINO`
+            },
+        ];
+
+        // DOM elements
+        const modal = document.getElementById('productModal');
+        const closeBtn = document.querySelector('.close');
+        const productsContainer = document.getElementById('products-container');
+        const mainImage = document.getElementById('mainImage');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        const productTitle = document.getElementById('productTitle');
+        const productPrice = document.getElementById('productPrice');
+        const productDescription = document.getElementById('productDescription');
+        const quantityInput = document.getElementById('quantityInput');
+
+        // Create product cards
+        function createProductCards() {
+            productsContainer.innerHTML = '';
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'pro-container';
+                productCard.innerHTML = `
+                    <img class="img" src="${product.image}" alt="${product.name}">
+                    <h6 class="text1">${product.name}</h6>
+                    <p class="text2">${product.shortDesc}</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text3">${product.price}</p>
+                    <a href="#" onclick="event.stopPropagation()"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                `;
+                productCard.addEventListener('click', () => openModal(product));
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // Open modal with product details
+        function openModal(product) {
+            productTitle.textContent = product.name;
+            productPrice.textContent = product.price;
+            productDescription.innerHTML = formatDescription(product.description);
+
+            // Set main image
+            mainImage.src = product.images[0];
+            mainImage.alt = product.name;
+
+            // Create thumbnails
+            thumbnailContainer.innerHTML = '';
+            product.images.forEach((imageSrc, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = imageSrc;
+                thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.alt = `${product.name} ${index + 1}`;
+                thumbnail.addEventListener('click', () => {
+                    mainImage.src = imageSrc;
+                    document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                });
+                thumbnailContainer.appendChild(thumbnail);
+            });
+
+            // Reset quantity
+            quantityInput.value = 1;
+
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Format description with line breaks
+        function formatDescription(description) {
+            return description.replace(/•/g, '<br>•').trim();
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Change quantity
+        function changeQuantity(change) {
+            const currentValue = parseInt(quantityInput.value);
+            const newValue = currentValue + change;
+            if (newValue >= 1 && newValue <= 10) {
+                quantityInput.value = newValue;
+            }
+        }
+
+        // Add to cart functionality
+        function addToCart() {
+            const quantity = quantityInput.value;
+            const productName = productTitle.textContent;
+            alert(`Added ${quantity} x ${productName} to cart!`);
+        }
+
+        // Buy now functionality
+        function buyNow() {
+            const quantity = quantityInput.value;
+            const productName = productTitle.textContent;
+            alert(`Proceeding to buy ${quantity} x ${productName}!`);
+        }
+
+        // Show up now functionality
+        function showNow() {
+            const productName = productTitle.textContent;
+            alert(`Showing up ${productName} now!`);
+        }
+
+        // Event listeners
+        closeBtn.addEventListener('click', closeModal);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        quantityInput.addEventListener('change', (event) => {
+            const value = parseInt(event.target.value);
+            if (value < 1) event.target.value = 1;
+            if (value > 10) event.target.value = 10;
+        });
+
+        // Initialize the page
+        createProductCards();
+        
+    </script>
+    <script src="prac.js"></script>
+</body>
+
+</html>
